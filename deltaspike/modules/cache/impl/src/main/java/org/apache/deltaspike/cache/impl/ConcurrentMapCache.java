@@ -36,7 +36,7 @@ public class ConcurrentMapCache implements Cache
     private final boolean allowNullValues;
 
     /**
-     * Create a new ConcurrentMapCache with the specified name.
+     * Creates a new ConcurrentMapCache with the specified name.
      * 
      * @param name
      *            the name of the cache
@@ -47,7 +47,7 @@ public class ConcurrentMapCache implements Cache
     }
 
     /**
-     * Create a new ConcurrentMapCache with the specified name.
+     * Creates a new ConcurrentMapCache with the specified name.
      * 
      * @param name
      *            the name of the cache
@@ -84,37 +84,37 @@ public class ConcurrentMapCache implements Cache
 
     public ConcurrentMap<?, ?> getNativeCache()
     {
-        return this.store;
+        return store;
     }
 
     public boolean isAllowNullValues()
     {
-        return this.allowNullValues;
+        return allowNullValues;
     }
 
     public ValueWrapper get(Object key)
     {
-        Object value = this.store.get(key);
+        Object value = store.get(key);
         return (value != null ? new SimpleValueWrapper(fromStoreValue(value)) : null);
     }
 
     public void put(Object key, Object value)
     {
-        this.store.put(key, toStoreValue(value));
+        store.put(key, toStoreValue(value));
     }
 
     public void evict(Object key)
     {
-        this.store.remove(key);
+        store.remove(key);
     }
 
     public void clear()
     {
-        this.store.clear();
+        store.clear();
     }
 
     /**
-     * Convert the given value from the internal store to a user value returned from the get method (adapting
+     * Converts the given value from the internal store to a user value returned from the get method (adapting
      * <code>null</code>).
      * 
      * @param storeValue
@@ -123,7 +123,7 @@ public class ConcurrentMapCache implements Cache
      */
     protected Object fromStoreValue(Object storeValue)
     {
-        if (this.allowNullValues && storeValue == NULL_HOLDER)
+        if (allowNullValues && storeValue == NULL_HOLDER)
         {
             return null;
         }
@@ -131,7 +131,7 @@ public class ConcurrentMapCache implements Cache
     }
 
     /**
-     * Convert the given user value, as passed into the put method, to a value in the internal store (adapting
+     * Converts the given user value, as passed into the put method, to a value in the internal store (adapting
      * <code>null</code>).
      * 
      * @param userValue
@@ -140,7 +140,7 @@ public class ConcurrentMapCache implements Cache
      */
     protected Object toStoreValue(Object userValue)
     {
-        if (this.allowNullValues && userValue == null)
+        if (allowNullValues && userValue == null)
         {
             return NULL_HOLDER;
         }

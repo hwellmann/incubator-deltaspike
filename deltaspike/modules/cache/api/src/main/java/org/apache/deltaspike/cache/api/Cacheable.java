@@ -37,20 +37,8 @@ public @interface Cacheable
 {
 
     /**
-     * Name of the caches in which the update takes place.
-     * <p>
-     * May be used to determine the target cache (or caches), matching the qualifier value (or the bean name(s)) of (a)
-     * specific bean definition.
+     * Name of the cache in which the update takes place.
      */
     @Nonbinding
     String value() default "";
-
-    /**
-     * Spring Expression Language (SpEL) attribute for computing the key dynamically.
-     * <p>
-     * Default is "", meaning all method parameters are considered as a key.
-     */
-    @Nonbinding
-    String key() default "";
-
 }

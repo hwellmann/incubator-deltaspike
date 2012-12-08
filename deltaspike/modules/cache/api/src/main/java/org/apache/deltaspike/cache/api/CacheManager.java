@@ -24,16 +24,16 @@ public interface CacheManager
 {
 
     /**
-     * Return the cache associated with the given name.
+     * Returns the cache with the given name.
      * 
      * @param name
      *            cache identifier (must not be {@code null})
-     * @return associated cache, or {@code null} if none is found
+     * @return cache, or {@code null} if none is known to this manager
      */
     Cache getCache(String name);
 
     /**
-     * Return a collection of the caches known by this cache manager.
+     * Returns the names of the caches known by this cache manager.
      * 
      * @return names of caches known by the cache manager.
      */

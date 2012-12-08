@@ -38,14 +38,14 @@ public class ConcurrentMapCacheManager implements CacheManager
     private boolean dynamic = true;
 
     /**
-     * Construct a dynamic ConcurrentMapCacheManager, lazily creating cache instances as they are being requested.
+     * Constructs a dynamic ConcurrentMapCacheManager, lazily creating cache instances as they are being requested.
      */
     public ConcurrentMapCacheManager()
     {
     }
 
     /**
-     * Construct a static ConcurrentMapCacheManager, managing caches for the specified cache names only.
+     * Constructs a static ConcurrentMapCacheManager, managing caches for the specified cache names only.
      */
     public ConcurrentMapCacheManager(String... cacheNames)
     {
@@ -53,7 +53,7 @@ public class ConcurrentMapCacheManager implements CacheManager
     }
 
     /**
-     * Specify the set of cache names for this CacheManager's 'static' mode.
+     * Specifies the set of cache names for this CacheManager's 'static' mode.
      * <p>
      * The number of caches and their names will be fixed after a call to this method, with no creation of further cache
      * regions at runtime.

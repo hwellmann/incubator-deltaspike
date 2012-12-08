@@ -18,17 +18,12 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class CacheableTest
 {
-
     @Inject
     private Calculator client;
 
     @Deployment
     public static WebArchive deploy()
     {
-//        JavaArchive testJar = ShrinkWrap.create(JavaArchive.class, "cacheTest.jar")
-//                .addPackage(CacheableTest.class.getPackage().getName())
-//                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
-
         JavaArchive[] archives = ShrinkWrapArchiveUtil.getArchives(
                 null,
                 "META-INF/beans.xml",
@@ -37,7 +32,6 @@ public class CacheableTest
 
         return ShrinkWrap.create(WebArchive.class)
                 .addAsLibraries(archives)
-//                .addAsLibraries(testJar)
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
@@ -48,7 +42,14 @@ public class CacheableTest
     {
         int result1 = client.add(2, 3);
         assertThat(result1, is(5));
+        assertThat(CalculatorImpl.getNumInvocations(), is(1));
+
         int result2 = client.add(2, 3);
         assertThat(result2, is(5));
+        assertThat(CalculatorImpl.getNumInvocations(), is(1));
+
+        int result3 = client.add(2, 6);
+        assertThat(result3, is(8));
+        assertThat(CalculatorImpl.getNumInvocations(), is(2));
     }
 }

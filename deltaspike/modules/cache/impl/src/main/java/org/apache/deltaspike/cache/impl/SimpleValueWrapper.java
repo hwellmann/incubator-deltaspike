@@ -26,10 +26,10 @@ public class SimpleValueWrapper implements ValueWrapper
     private final Object value;
 
     /**
-     * Create a new SimpleValueWrapper instance for exposing the given value.
+     * Creates a new SimpleValueWrapper for the given value.
      * 
      * @param value
-     *            the value to expose (may be <code>null</code>)
+     *            the value to be wrapped (may be <code>null</code>)
      */
     public SimpleValueWrapper(Object value)
     {
@@ -37,11 +37,10 @@ public class SimpleValueWrapper implements ValueWrapper
     }
 
     /**
-     * Simply returns the value as given at construction time.
+     * Returns the wrapped value.
      */
     public Object get()
     {
         return this.value;
     }
-
 }
