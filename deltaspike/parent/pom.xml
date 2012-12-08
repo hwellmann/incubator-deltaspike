@@ -88,7 +88,7 @@
 
         <jacoco.version>0.5.7.201204190339</jacoco.version>
 
-        <arquillian-openwebbeans.version>1.0.0.CR2</arquillian-openwebbeans.version>
+        <arquillian-openwebbeans.version>1.0.0.Final-SNAPSHOT</arquillian-openwebbeans.version>
         <arquillian-weld.version>1.0.0.CR5</arquillian-weld.version>
 
         <!-- OSGi bundles properties -->
@@ -130,6 +130,19 @@
     </repositories>
 
     <profiles>
+        <profile>
+            <id>Arquillian</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.arquillian.junit</groupId>
+                    <artifactId>arquillian-junit-container</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
         <profile>
             <id>JBossArchive</id>
             <repositories>
@@ -531,12 +544,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
-            <version>${arquillian.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
